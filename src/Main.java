@@ -21,10 +21,12 @@ public class Main {
 		lauta.tulostaVuoro();
 		System.out.println("");
 		System.out.println("Valitse Nappula!");
+		//lukija.nextLine();
 		nappulaValinta = lukija.nextLine();
 		peliNappula = lauta.palautaNappula(nappulaValinta);
 		System.out.println("Anna Siirto!");
 		siirto = lukija.nextLine();
+		//lukija.nextLine();
 		lauta.teeSiirto(siirto, peliNappula);
 		lauta.vaihdaVuoro();
 		System.out.println("");

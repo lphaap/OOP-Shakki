@@ -115,19 +115,21 @@ public class Lauta {
 	//Tulostaa laudan
 	public void tulostaLauta() {
 		String tuloste = "";
+		System.out.println("1 2 3 4 5 6 7 8");
 		for(int i = 0; i < 8; ++i) {
 			for(int j = 0;  j < 8; ++j) {
-				if(j < 8) {
+				//if(j < 7 && j > 0 ) {
 				if(this.lauta[i][j] == null) {
-					tuloste = tuloste + "[ ]";
+					tuloste = tuloste + "    ";
 				}
 				else {
-					tuloste = tuloste + "["+this.lauta[i][j].annaTulosteMerkki()+"]";
+					tuloste = tuloste + ""+this.lauta[i][j].annaTulosteMerkki()+"";
 				}
-				}
+				//}
 
 			}
 			System.out.println(tuloste);
+			//System.out.println("-------------------------------");
 			tuloste = "";
 		}
 	}
