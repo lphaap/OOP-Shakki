@@ -40,12 +40,6 @@ public abstract class Nappula {
 		this.yKoord = y;
 	}
 	
-	/**
-	 * @param Parametreina laudan x ja y koordinaatti
-	 * Liikuttaa nappulaa haluttuun (x,y) ruutuun
-	 * @return Palauttaa true jos siirto laillinen
-	 */
-	abstract boolean liikuta(int x, int y);
 	
 	/**
 	 * 

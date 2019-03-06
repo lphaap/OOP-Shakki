@@ -6,11 +6,6 @@ public class Ratsu extends Nappula{
 	}
 	
 	//TODO:
-	public boolean liikuta(int x, int y){
-		return false;
-	}
-	
-	//TODO:
 		public boolean tarkistaSiirto(int x, int y) {
 			return false;
 		}

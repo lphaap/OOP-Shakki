@@ -84,6 +84,7 @@ public class Lauta {
 	 * @return Palauttaa listan kyseisessä kohdassa olevan nappulan
 	 */
 	public Nappula palautaNappula(String koordinaatit) {
+		//Testaa vastaako vuoro nappulan pelaajaa
 		int koord1 = Integer.parseInt(koordinaatit.substring(0, 1));
 		int koord2 = Integer.parseInt(koordinaatit.substring(2));
 		//System.out.println(""+koord1+","+koord2);

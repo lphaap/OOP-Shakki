@@ -4,11 +4,7 @@ public class Torni extends Nappula{
 	public Torni(Vari v, int pelaaja, int x, int y) {
 		super(v, pelaaja, x, y);
 	}
-	
-	//TODO:
-	public boolean liikuta(int x, int y){
-		return false;
-	}
+
 	
 	//TODO:
 		public boolean tarkistaSiirto(int x, int y) {
