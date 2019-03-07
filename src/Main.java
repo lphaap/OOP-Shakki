@@ -1,13 +1,40 @@
+
 import java.util.*;
+import java.io.IOException;
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Lauta lauta = new Lauta();
 		boolean peli = true;
 		Scanner lukija = new Scanner(System.in);
 		String nappulaValinta = "";
 		String siirto = "";
 		Nappula peliNappula;
+		
+		System.out.println("Anna tallennus tiedoston polku!");
+		System.out.println("Esim. C:/tallenus.txt");
+    	String tiedosto = lukija.nextLine();
+    	//try {
+    	/*	Tallentaja t = new Tallentaja(tiedosto);
+    	//}
+    	/*catch (IOException e) {
+    		System.out.println("Virheellinen tiedosto!");
+    		System.exit(0);
+    	}
+    	
+    	System.out.println("");
+    	System.out.println("Haluatko jatkaa peliä?");
+    	System.out.println("Y - Jep , N - Ei kiitos");
+    
+    	String valinta = lukija.nextLine();
+    	//if(valinta.equals("Y")) {
+    	//	Lauta lauta = new Lauta(t.luePeli());
+    	}
+    	else {
+    		//Lauta lauta = new Lauta();
+    	//}
+    	*/
 		
 		System.out.println("Siirrot ja nappulan valinnat annetaan muodossa Pytstyrivi-Vaakarivi esim. 1-1 tai 3-8 !");
 		System.out.println("");
@@ -16,6 +43,10 @@ public class Main {
 		
 		//Peli looppi
 		while(peli) {
+		/*if(lauta.annaVuoro() == 1) {
+			System.out.println("Tallennettu");
+			t.tallennaPeli(lauta);
+		}*/
 		lauta.tulostaLauta();
 		System.out.println("");
 		lauta.tulostaVuoro();
@@ -34,6 +65,7 @@ public class Main {
 	}
 
 }
+
 
 //TODO:
 /**

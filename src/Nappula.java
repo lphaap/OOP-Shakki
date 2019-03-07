@@ -1,5 +1,7 @@
+import java.io.Serializable;
 
-public abstract class Nappula {
+public abstract class Nappula implements Serializable{
+	private static final long serialVersionUID = 1;
 	protected Vari v ;
 	protected int xKoord;
 	protected int yKoord;

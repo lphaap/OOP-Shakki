@@ -1,9 +1,15 @@
-public class Lauta {
+import java.io.Serializable;
+
+public class Lauta implements Serializable{
 	
 	//Sallitut arvot 1 ja 2, kummallekin pelaajalle
 	public int vuoro = 1;
 	
 	private Nappula[][] lauta;
+	
+	public Lauta(Nappula[][] tallennus) {
+		this.lauta = tallennus;
+	}
 	
 	public Lauta() {
 		
@@ -60,6 +66,8 @@ public class Lauta {
 			}
 		}
 	}
+
+
 	//Vaihtaa vuoro attribuutin arvon 1 tai 2
 	public void vaihdaVuoro() {
 		if(this.vuoro == 1) {
@@ -116,7 +124,7 @@ public class Lauta {
 	//Tulostaa laudan
 	public void tulostaLauta() {
 		String tuloste = "";
-		System.out.println("1 2 3 4 5 6 7 8");
+		System.out.println("  0 1 2 3 4 5 6 7");
 		for(int i = 0; i < 8; ++i) {
 			for(int j = 0;  j < 8; ++j) {
 				//if(j < 7 && j > 0 ) {
@@ -124,15 +132,20 @@ public class Lauta {
 					tuloste = tuloste + "    ";
 				}
 				else {
-					tuloste = tuloste + ""+this.lauta[i][j].annaTulosteMerkki()+"";
+					tuloste = tuloste + " "+this.lauta[i][j].annaTulosteMerkki()+"";
 				}
 				//}
 
 			}
-			System.out.println(tuloste);
+			System.out.println(i + tuloste);
 			//System.out.println("-------------------------------");
 			tuloste = "";
 		}
+		System.out.println("  0 1 2 3 4 5 6 7");
+	}
+	
+	public Nappula[][] annaLauta() {
+		return this.lauta;
 	}
 	
 }
