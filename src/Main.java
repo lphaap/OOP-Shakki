@@ -5,20 +5,22 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		Lauta lauta = new Lauta();
+		//Lauta lauta = new Lauta();
 		boolean peli = true;
 		Scanner lukija = new Scanner(System.in);
 		String nappulaValinta = "";
 		String siirto = "";
 		Nappula peliNappula;
+		int vuoro =0;
 		
 		System.out.println("Anna tallennus tiedoston polku!");
 		System.out.println("Esim. C:/tallenus.txt");
     	String tiedosto = lukija.nextLine();
-    	//try {
-    	/*	Tallentaja t = new Tallentaja(tiedosto);
-    	//}
-    	/*catch (IOException e) {
+    	Tallentaja t = null;
+    	try {
+    		t = new Tallentaja(tiedosto);
+    	}
+    	catch (IOException e) {
     		System.out.println("Virheellinen tiedosto!");
     		System.exit(0);
     	}
@@ -28,13 +30,15 @@ public class Main {
     	System.out.println("Y - Jep , N - Ei kiitos");
     
     	String valinta = lukija.nextLine();
-    	//if(valinta.equals("Y")) {
-    	//	Lauta lauta = new Lauta(t.luePeli());
+    	
+    	Lauta lauta = null;
+    	if(valinta.equals("Y")) {
+    		lauta = t.luePeli();
     	}
     	else {
-    		//Lauta lauta = new Lauta();
-    	//}
-    	*/
+    		lauta = new Lauta();
+    	}
+    	
 		
 		System.out.println("Siirrot ja nappulan valinnat annetaan muodossa Pytstyrivi-Vaakarivi esim. 1-1 tai 3-8 !");
 		System.out.println("");
@@ -43,10 +47,11 @@ public class Main {
 		
 		//Peli looppi
 		while(peli) {
-		/*if(lauta.annaVuoro() == 1) {
-			System.out.println("Tallennettu");
+		if(lauta.annaVuoro() == 1) {
+			System.out.println("Peli Tallennettu!");
+			System.out.println("");
 			t.tallennaPeli(lauta);
-		}*/
+		}
 		lauta.tulostaLauta();
 		System.out.println("");
 		lauta.tulostaVuoro();
@@ -54,6 +59,12 @@ public class Main {
 		System.out.println("Valitse Nappula!");
 		nappulaValinta = lukija.nextLine();
 		peliNappula = lauta.palautaNappula(nappulaValinta);
+		vuoro = lauta.annaVuoro();
+		while(vuoro != peliNappula.annaPelaajaNum() ) {
+			System.out.println("Valitse Oma Nappulasi..");
+			nappulaValinta = lukija.nextLine();
+			peliNappula = lauta.palautaNappula(nappulaValinta);
+		}
 		System.out.println("Anna Siirto!");
 		siirto = lukija.nextLine();
 		lauta.teeSiirto(siirto, peliNappula);

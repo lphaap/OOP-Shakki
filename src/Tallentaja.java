@@ -7,24 +7,26 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 public class Tallentaja {
-	private FileOutputStream fos;
-	private ObjectOutputStream oos;
-	private FileInputStream fi;
-	private ObjectInputStream oi;
+
+	private String file;
 	
 	public Tallentaja(String txtfile) throws IOException {
-		this.fos = new FileOutputStream(new File(txtfile));
-		this.oos = new ObjectOutputStream(fos);
-		this.fi = new FileInputStream(new File(txtfile));
-		this.oi = new ObjectInputStream(fi);
+		this.file = txtfile;
 	}
 	
 	public void tallennaPeli(Lauta lauta) throws IOException {
+		FileOutputStream fos = new FileOutputStream(new File(this.file));
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(lauta);
+		oos.close();
 	}
 	
 	public Lauta luePeli() throws ClassNotFoundException, IOException {
-		
-		return (Lauta)oi.readObject();
+		FileInputStream fi = new FileInputStream(new File(this.file));
+		ObjectInputStream oi = new ObjectInputStream(fi);
+		Lauta lauta = (Lauta)oi.readObject();
+		oi.close();
+		return lauta;
 	}
+	
 }

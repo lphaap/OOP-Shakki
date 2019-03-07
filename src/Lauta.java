@@ -129,7 +129,7 @@ public class Lauta implements Serializable{
 			for(int j = 0;  j < 8; ++j) {
 				//if(j < 7 && j > 0 ) {
 				if(this.lauta[i][j] == null) {
-					tuloste = tuloste + "    ";
+					tuloste = tuloste + "  ";
 				}
 				else {
 					tuloste = tuloste + " "+this.lauta[i][j].annaTulosteMerkki()+"";
