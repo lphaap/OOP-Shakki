@@ -105,15 +105,20 @@ public class Lauta implements Serializable{
 	 * @param peliNappula = Tämänhetkinen nappulan valinta
 	 */
 	// [i == 1 == Y][j == 2 == X]
-	public void teeSiirto(String koordinaatit, Nappula peliNappula) {
+	public boolean teeSiirto(String koordinaatit, Nappula peliNappula) {
 		int koord1 = Integer.parseInt(koordinaatit.substring(0, 1));
 		int koord2 = Integer.parseInt(koordinaatit.substring(2));
+		if (peliNappula.tarkistaSiirto(koordinaatit, this.lauta)){
 		this.lauta[koord1][koord2] = this.lauta[peliNappula.annaY()][peliNappula.annaX()];
 		Nappula n = this.lauta[peliNappula.annaY()][peliNappula.annaX()];
 		this.lauta[peliNappula.annaY()][peliNappula.annaX()] = null;
 		n.asetaX(koord2);
 		n.asetaY(koord1);
-
+		return true;
+		}
+		else {
+			return false;
+		}
 		
 		
 		

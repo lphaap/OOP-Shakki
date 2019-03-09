@@ -5,10 +5,6 @@ public class Ratsu extends Nappula{
 		super(v, pelaaja, x, y);
 	}
 	
-	//TODO:
-		public boolean tarkistaSiirto(int x, int y) {
-			return false;
-		}
 	
 	public String annaTulosteMerkki() {
 		if(this.v == Vari.VALKOINEN) {

@@ -6,10 +6,6 @@ public class Kuningas extends Nappula{
 	}
 	
 	
-	//TODO:
-		public boolean tarkistaSiirto(int x, int y) {
-			return false;
-		}
 	
 	public String annaTulosteMerkki() {
 		if(this.v == Vari.VALKOINEN) {

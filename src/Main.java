@@ -67,15 +67,25 @@ public class Main {
 		}
 		System.out.println("Anna Siirto!");
 		siirto = lukija.nextLine();
-		lauta.teeSiirto(siirto, peliNappula);
-		lauta.vaihdaVuoro();
+		
+		while(lauta.teeSiirto(siirto, peliNappula) == false) {
+			System.out.println("Virheellinen koordinaatti!");
+			System.out.println("");
+			System.out.println("Anna Uusi Siirto!");
+			siirto = lukija.nextLine();
+		}
+		
 		System.out.println("");
 		
 		if(lauta.onkoKuningas() == false) {
-			System.out.println("Pelaaja" +lauta.annaVuoro() + "voittaa!");
+			System.out.println("Pelaaja " +lauta.annaVuoro() + " voittaa!");
 			peli = false;
 			
-	}
+		}
+		lauta.vaihdaVuoro();
+		if(peli == false) {
+			lauta.tulostaLauta();
+		}
 		}
 		
 		

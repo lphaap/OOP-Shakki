@@ -42,15 +42,28 @@ public abstract class Nappula implements Serializable{
 		this.yKoord = y;
 	}
 	
+	public boolean tarkistaSiirto(String koordinaatit, Nappula[][] lauta) {
+		int x = Integer.parseInt(koordinaatit.substring(0,1));
+		int y = Integer.parseInt(koordinaatit.substring(2));
+		if(x > 7 || y > 7 || x < 0 || y < 0) {
+			return false;
+		}
+		Nappula[][] nyklauta = new Nappula[8][8];
+		nyklauta = lauta;
+
+		if (x <= 7 && y <= 7) {
+			if (nyklauta[x][y] != null) {
+				if (nyklauta[x][y].annaPelaajaNum() == this.pelaaja) {
+					return false;
+
+				}
+			}
+			return true;
+		}
+
+		return false;
+	}
 	
-	/**
-	 * 
-	 * @param x = laudan vaakarivi
-	 * @param y = laudan pystyrivi
-	 * @return Palauttaa true, jos siirto onnistuu
-	 */
-	//Tarkastatetaan jokaiselle nappulalle ominaisten liikkeiden kautta siirron oikeellisuus
-	abstract boolean tarkistaSiirto(int x, int y);
 	
 	
 	/**
