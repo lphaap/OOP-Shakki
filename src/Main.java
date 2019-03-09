@@ -5,7 +5,6 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		//Lauta lauta = new Lauta();
 		boolean peli = true;
 		Scanner lukija = new Scanner(System.in);
 		String nappulaValinta = "";
@@ -47,6 +46,7 @@ public class Main {
 		
 		//Peli looppi
 		while(peli) {
+		
 		if(lauta.annaVuoro() == 1) {
 			System.out.println("Peli Tallennettu!");
 			System.out.println("");
@@ -70,6 +70,12 @@ public class Main {
 		lauta.teeSiirto(siirto, peliNappula);
 		lauta.vaihdaVuoro();
 		System.out.println("");
+		
+		if(lauta.onkoKuningas() == false) {
+			System.out.println("Pelaaja" +lauta.annaVuoro() + "voittaa!");
+			peli = false;
+			
+	}
 		}
 		
 		

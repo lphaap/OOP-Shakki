@@ -108,14 +108,12 @@ public class Lauta implements Serializable{
 	public void teeSiirto(String koordinaatit, Nappula peliNappula) {
 		int koord1 = Integer.parseInt(koordinaatit.substring(0, 1));
 		int koord2 = Integer.parseInt(koordinaatit.substring(2));
-		//System.out.println("Siirto: "+koord2+","+koord1);
 		this.lauta[koord1][koord2] = this.lauta[peliNappula.annaY()][peliNappula.annaX()];
-		//System.out.println("Nappula Koord: "+peliNappula.annaY()+","+peliNappula.annaX());
 		Nappula n = this.lauta[peliNappula.annaY()][peliNappula.annaX()];
 		this.lauta[peliNappula.annaY()][peliNappula.annaX()] = null;
 		n.asetaX(koord2);
 		n.asetaY(koord1);
-		//System.out.println("Siirto: "+this.lauta[koord1][koord2].annaY()+","+this.lauta[koord1][koord2].annaX());
+
 		
 		
 		
@@ -127,18 +125,16 @@ public class Lauta implements Serializable{
 		System.out.println("  0 1 2 3 4 5 6 7");
 		for(int i = 0; i < 8; ++i) {
 			for(int j = 0;  j < 8; ++j) {
-				//if(j < 7 && j > 0 ) {
 				if(this.lauta[i][j] == null) {
 					tuloste = tuloste + "  ";
 				}
 				else {
 					tuloste = tuloste + " "+this.lauta[i][j].annaTulosteMerkki()+"";
 				}
-				//}
+
 
 			}
 			System.out.println(i + tuloste);
-			//System.out.println("-------------------------------");
 			tuloste = "";
 		}
 		System.out.println("  0 1 2 3 4 5 6 7");
@@ -147,5 +143,29 @@ public class Lauta implements Serializable{
 	public Nappula[][] annaLauta() {
 		return this.lauta;
 	}
+	
+	public boolean onkoKuningas() {
+		int kuninkaat = 0;
+		Kuningas k = new Kuningas(Vari.VALKOINEN, 1, 9,9);
+		Kuningas k2 = new Kuningas(Vari.MUSTA, 1, 9,9);
+		for(int i = 0; i < 8; ++i) {
+			for(int j = 0;  j <8; ++j) { 
+				if(this.lauta[i][j] != null) {
+				if(this.lauta[i][j].annaTulosteMerkki().equals(k.annaTulosteMerkki())) {
+					kuninkaat +=1;	
+			}	
+				if(this.lauta[i][j].annaTulosteMerkki().equals(k2.annaTulosteMerkki())) {
+					kuninkaat +=1;	
+			}	
+				}
+			}
+			}
+		if(kuninkaat == 2) {
+			return true;
+		
+	  } else {
+		  return false;
+	}
+}
 	
 }
