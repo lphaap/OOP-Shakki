@@ -42,6 +42,7 @@ public abstract class Nappula implements Serializable{
 		this.yKoord = y;
 	}
 	
+	//Tarkistaa ettei siirto mene yli laudan ja ettei pelaaja vahingossa voi syödä omaa nappulaansa
 	public boolean tarkistaSiirto(String koordinaatit, Nappula[][] lauta) {
 		int x = Integer.parseInt(koordinaatit.substring(0,1));
 		int y = Integer.parseInt(koordinaatit.substring(2));

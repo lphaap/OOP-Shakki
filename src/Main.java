@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
+	public static void main(String[] args)  {
 		boolean peli = true;
 		Scanner lukija = new Scanner(System.in);
 		String nappulaValinta = "";
@@ -12,8 +12,8 @@ public class Main {
 		Nappula peliNappula;
 		int vuoro =0;
 		
-		System.out.println("Anna tallennus tiedoston polku!");
-		System.out.println("Esim. C:/tallenus.txt");
+		System.out.println("Anna tallennus tiedoston polku tai uuden tiedoston Nimi!");
+		System.out.println("Esim. C:/tallenus.txt tai Peli1 ");
     	String tiedosto = lukija.nextLine();
     	Tallentaja t = null;
     	try {
@@ -32,7 +32,15 @@ public class Main {
     	
     	Lauta lauta = null;
     	if(valinta.equals("Y")) {
-    		lauta = t.luePeli();
+    		try {
+				lauta = t.luePeli();
+			} catch (ClassNotFoundException | IOException e) {
+				System.out.println("Peliä ei voitu ladata!");
+				System.out.println("");
+				System.out.println("Virheellinen tiedosto osoite tai Tiedosto on tyhjä!");
+				System.out.println("Muista antaa jo olemassa olevan txt-tallenteen osoite.");
+				System.exit(0);
+			}
     	}
     	else {
     		lauta = new Lauta();
@@ -48,9 +56,15 @@ public class Main {
 		while(peli) {
 		
 		if(lauta.annaVuoro() == 1) {
-			System.out.println("Peli Tallennettu!");
-			System.out.println("");
-			t.tallennaPeli(lauta);
+			try {
+				t.tallennaPeli(lauta);
+				System.out.println("Peli Tallennettu!");
+				System.out.println("");
+			} catch (Exception e) {
+				System.out.println("Peliä ei voida Tallentaa!");
+				System.out.println("Virheellinen tiedosto osoite!");
+				System.out.println("");
+			}
 		}
 		lauta.tulostaLauta();
 		System.out.println("");
@@ -92,21 +106,3 @@ public class Main {
 	}
 
 }
-
-
-//TODO:
-/**
- * teeSiirto metodin tulisi tarkistaa vastaako valittu nappula pelaajan vuoroa, tällähetkellä kumoikin pelaaja voi valita toistensa nappuloita
- * ts. Nappula: Pelaaja attribuutti == lauta.annaVuoro()
- * 
- * Jokaiselle nappulalle tarkistus metodi
- * 
- * Poistaa liikuta metodit kaikista nappuloista ja itse nappula luokasta, tarkistus metodi korvaa tämän
- * Sijoitetaan tarkistus metodi lauta.teeSiirto() metodiin
- * 
- * Tarvitaan myös johonkin metodi, joka tarkistaa onko siirron tiellä muu nappula ja jos on haluttu siirto muutetaan tämän nappulan syönniksi
- * Esim. siirretään tornia 1-1 > 5-1, mutta tiellä kohdassa 3-1 on nappula, jolloin tornin siirto jää kohtaan 3-1, tällöin ei tarvita kahta tarkistus metodia
- * ja syönti automatisoituu, tällähetkellä pelaaja voi myös syödä omia nappuloitaan ja hypätä nappuloiden yli
- * 
- * Tässä mun ideat tällähetkellä, jotka tokin vain ideoita ja muutoksia saa mun puolesta tehdä jos paremmaksi näkee :O
-*/
