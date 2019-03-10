@@ -69,7 +69,7 @@ public abstract class Nappula implements Serializable{
 	
 	/**
 	 * 
-	 * @return Palauttaa String arvon kyseiselle shakki nappulalle
+	 * @return Palauttaa Unicode arvon kyseiselle shakki nappulalle
 	 */
 	abstract String annaTulosteMerkki();
 }

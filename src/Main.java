@@ -12,8 +12,8 @@ public class Main {
 		Nappula peliNappula;
 		int vuoro =0;
 		
-		System.out.println("Anna tallennus tiedoston polku tai uuden tiedoston Nimi!");
-		System.out.println("Esim. C:/tallenus.txt tai Peli1 ");
+		System.out.println("Anna tallenne tiedoston polku tai uuden tiedoston Nimi!");
+		System.out.println("Esim. C:/tallenus.txt Tai Peli1 ");
     	String tiedosto = lukija.nextLine();
     	Tallentaja t = null;
     	try {
@@ -37,8 +37,8 @@ public class Main {
 			} catch (ClassNotFoundException | IOException e) {
 				System.out.println("Peliä ei voitu ladata!");
 				System.out.println("");
-				System.out.println("Virheellinen tiedosto osoite tai Tiedosto on tyhjä!");
-				System.out.println("Muista antaa jo olemassa olevan txt-tallenteen osoite.");
+				System.out.println("Virheellinen tiedosto tai Tiedosto on tyhjä!");
+				System.out.println("Muista antaa jo olemassa olevan txt-tallenne.");
 				System.exit(0);
 			}
     	}
@@ -72,6 +72,19 @@ public class Main {
 		System.out.println("");
 		System.out.println("Valitse Nappula!");
 		nappulaValinta = lukija.nextLine();
+		loop1: while(true) {
+			try {
+				Integer.parseInt(nappulaValinta.substring(0,1));
+				Integer.parseInt(nappulaValinta.substring(2));
+				break loop1;
+			}
+			catch (NumberFormatException e){
+				System.out.println("");
+				System.out.println("Virheellinen Nappulan valinta!");
+				System.out.println("Anna Uusi valinta muodossa Vaakarivi-Pystyrivi!");
+				nappulaValinta = lukija.nextLine();
+			}
+		}
 		peliNappula = lauta.palautaNappula(nappulaValinta);
 		vuoro = lauta.annaVuoro();
 		while(vuoro != peliNappula.annaPelaajaNum() ) {

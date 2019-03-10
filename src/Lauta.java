@@ -101,13 +101,20 @@ public class Lauta implements Serializable{
 	
 	/**
 	 * 
-	 * @param koordinaatit - Main scannerin tuottama koordinaatti valinta muodossa pytstyrivi-vaakarivi
+	 * @param koordinaatit - Main scannerin tuottama koordinaatti valinta muodossa vaakarivi-pystyrivi
 	 * @param peliNappula = Tämänhetkinen nappulan valinta
 	 */
 	// [i == 1 == Y][j == 2 == X]
 	public boolean teeSiirto(String koordinaatit, Nappula peliNappula) {
-		int koord1 = Integer.parseInt(koordinaatit.substring(0, 1));
-		int koord2 = Integer.parseInt(koordinaatit.substring(2));
+		int koord1;
+		int koord2;
+		try {
+			koord1 = Integer.parseInt(koordinaatit.substring(0, 1));
+			koord2 = Integer.parseInt(koordinaatit.substring(2));
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
 		if (peliNappula.tarkistaSiirto(koordinaatit, this.lauta)){
 		this.lauta[koord1][koord2] = this.lauta[peliNappula.annaY()][peliNappula.annaX()];
 		Nappula n = this.lauta[peliNappula.annaY()][peliNappula.annaX()];
@@ -127,11 +134,11 @@ public class Lauta implements Serializable{
 	//Tulostaa laudan
 	public void tulostaLauta() {
 		String tuloste = "";
-		System.out.println("  0 1 2 3 4 5 6 7");
+		System.out.println(" 0 1 2 3 4 5 6 7");
 		for(int i = 0; i < 8; ++i) {
 			for(int j = 0;  j < 8; ++j) {
 				if(this.lauta[i][j] == null) {
-					tuloste = tuloste + "  ";
+					tuloste = tuloste + "    ";
 				}
 				else {
 					tuloste = tuloste + " "+this.lauta[i][j].annaTulosteMerkki()+"";
@@ -142,13 +149,14 @@ public class Lauta implements Serializable{
 			System.out.println(i + tuloste);
 			tuloste = "";
 		}
-		System.out.println("  0 1 2 3 4 5 6 7");
+		System.out.println(" 0 1 2 3 4 5 6 7");
 	}
 	
 	public Nappula[][] annaLauta() {
 		return this.lauta;
 	}
 	
+	//Tarkistaa shakkimatin
 	public boolean onkoKuningas() {
 		int kuninkaat = 0;
 		Kuningas k = new Kuningas(Vari.VALKOINEN, 1, 9,9);
