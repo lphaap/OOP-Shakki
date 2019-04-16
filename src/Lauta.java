@@ -7,6 +7,7 @@ public class Lauta implements Serializable{
 	
 	private Nappula[][] lauta;
 	
+	
 	public Lauta(Nappula[][] tallennus) {
 		this.lauta = tallennus;
 	}
@@ -57,10 +58,10 @@ public class Lauta implements Serializable{
 				}
 						
 				if(i == 1) {
-					this.lauta[i][j] = new Sotilas(Vari.MUSTA, 1, j, i);
+					this.lauta[i][j] = new Sotilas(Vari.VALKOINEN, 1, j, i);
 				}
 				if(i == 6) {
-					this.lauta[i][j] = new Sotilas(Vari.VALKOINEN, 2, j, i);
+					this.lauta[i][j] = new Sotilas(Vari.MUSTA, 2, j, i);
 				}
 				
 			}
@@ -92,10 +93,8 @@ public class Lauta implements Serializable{
 	 * @return Palauttaa listan kyseisessä kohdassa olevan nappulan
 	 */
 	public Nappula palautaNappula(String koordinaatit) {
-		//Testaa vastaako vuoro nappulan pelaajaa
 		int koord1 = Integer.parseInt(koordinaatit.substring(0, 1));
 		int koord2 = Integer.parseInt(koordinaatit.substring(2));
-		//System.out.println(""+koord1+","+koord2);
 		return this.lauta[koord1][koord2];
 	}
 	
@@ -131,7 +130,7 @@ public class Lauta implements Serializable{
 		
 	}
 	
-	//Tulostaa laudan
+	//Tulostaa laudan shakki merkkeineen
 	public void tulostaLauta() {
 		String tuloste = "";
 		System.out.println(" 0 1 2 3 4 5 6 7");
@@ -156,7 +155,11 @@ public class Lauta implements Serializable{
 		return this.lauta;
 	}
 	
-	//Tarkistaa shakkimatin
+	//Tarkistaa onko peli shakkimatti
+	/**
+	 * 
+	 * @return True jos peli on ohi muuten false
+	 */
 	public boolean onkoKuningas() {
 		int kuninkaat = 0;
 		Kuningas k = new Kuningas(Vari.VALKOINEN, 1, 9,9);

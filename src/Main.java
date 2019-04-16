@@ -47,7 +47,7 @@ public class Main {
     	}
     	
 		
-		System.out.println("Siirrot ja nappulan valinnat annetaan muodossa Pytstyrivi-Vaakarivi esim. 1-1 tai 3-8 !");
+		System.out.println("Siirrot ja nappulan valinnat annetaan muodossa Vaakarivi-Pystyrivi esim. 1-1 tai 3-8 !");
 		System.out.println("");
 		System.out.println("Peli alkakoon!");
 		System.out.println("");
@@ -72,19 +72,25 @@ public class Main {
 		System.out.println("");
 		System.out.println("Valitse Nappula!");
 		nappulaValinta = lukija.nextLine();
+		
+		int testi1;
+		int testi2;
 		loop1: while(true) {
 			try {
-				Integer.parseInt(nappulaValinta.substring(0,1));
-				Integer.parseInt(nappulaValinta.substring(2));
+				testi1 =Integer.parseInt(nappulaValinta.substring(0,1));
+				testi2 = Integer.parseInt(nappulaValinta.substring(2));
 				break loop1;
 			}
-			catch (NumberFormatException e){
+			catch (NumberFormatException | ArrayIndexOutOfBoundsException e){
 				System.out.println("");
 				System.out.println("Virheellinen Nappulan valinta!");
 				System.out.println("Anna Uusi valinta muodossa Vaakarivi-Pystyrivi!");
 				nappulaValinta = lukija.nextLine();
 			}
 		}
+		
+		
+		
 		peliNappula = lauta.palautaNappula(nappulaValinta);
 		vuoro = lauta.annaVuoro();
 		while(vuoro != peliNappula.annaPelaajaNum() ) {
